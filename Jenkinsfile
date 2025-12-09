@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/<your-username>/my-practice-repo.git'
+                git branch: 'main', url: 'https://github.com/dhruv26-ops/practice.git'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Starting simple web server..."
-                python3 -m http.server 8080 &
+                python3 -m http.server 9090 &
                 '''
             }
         }
