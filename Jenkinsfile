@@ -22,14 +22,14 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                sh '''
-                echo "Starting simple web server..."
-                python3 -m http.server 9090 &
-                '''
-            }
-        }
+    steps {
+        sh '''
+        docker run -d -p 9090:80 \
+          -v $WORKSPACE:/usr/share/nginx/html:ro \
+          nginx:alpine
+        '''
     }
+}
 
     post {
         success {
